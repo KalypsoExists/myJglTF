@@ -26,12 +26,7 @@
  */
 package de.javagl.jgltf.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.MaterialModel;
@@ -176,5 +171,16 @@ public final class DefaultMeshPrimitiveModel extends AbstractModelElement
         return Collections.unmodifiableList(targets);
     }
 
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(mode, indices, attributes, materialModel, targets);
+    }
 
 }

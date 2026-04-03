@@ -27,6 +27,7 @@
 package de.javagl.jgltf.model.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferModel;
 import de.javagl.jgltf.model.io.Buffers;
@@ -46,6 +47,18 @@ public final class DefaultBufferModel extends AbstractNamedModelElement
      * The actual data of the buffer
      */
     private ByteBuffer bufferData;
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), uri, bufferData);
+    }
     
     /**
      * Creates a new instance

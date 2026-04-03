@@ -26,10 +26,7 @@
  */
 package de.javagl.jgltf.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Supplier;
 
 import de.javagl.jgltf.model.CameraModel;
@@ -416,6 +413,20 @@ public class DefaultNodeModel extends AbstractNamedModelElement
                 + " array elements, but found " + array.length);
         }
         return array;
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        float[] transform = new float[16];
+        computeLocalTransform(transform);
+        hash = Objects.hash(getName(), parent, meshModels, children, skinModel, cameraModel, Arrays.hashCode(transform));
     }
     
     

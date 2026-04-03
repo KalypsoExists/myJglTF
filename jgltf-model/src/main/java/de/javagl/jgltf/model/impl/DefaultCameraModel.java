@@ -26,6 +26,8 @@
  */
 package de.javagl.jgltf.model.impl;
 
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
@@ -111,6 +113,18 @@ public final class DefaultCameraModel extends AbstractNamedModelElement
             }
             computeProjectionMatrix(t, aspectRatio);
         });
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), cameraOrthographicModel, cameraPerspectiveModel);
     }
     
     

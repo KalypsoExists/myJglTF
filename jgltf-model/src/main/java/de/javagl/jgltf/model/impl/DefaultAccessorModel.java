@@ -33,6 +33,9 @@ import de.javagl.jgltf.model.Accessors;
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ElementType;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Implementation of an {@link AccessorModel}
  */
@@ -88,6 +91,19 @@ public final class DefaultAccessorModel extends AbstractNamedModelElement
      * The maximum components
      */
     private Number[] min;
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), componentType, normalized, byteOffset, bufferViewModel,
+                elementType, count, byteStride, accessorData, Arrays.hashCode(max), Arrays.hashCode(min));
+    }
     
     /**
      * Creates a new instance

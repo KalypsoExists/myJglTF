@@ -27,6 +27,7 @@
 package de.javagl.jgltf.model.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Objects;
 import java.util.function.Consumer;
 
 import de.javagl.jgltf.model.BufferModel;
@@ -76,6 +77,20 @@ public final class DefaultBufferViewModel extends AbstractNamedModelElement
      * Whether the sparse substitution was already applied
      */
     private boolean sparseSubstitutionApplied;
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), bufferModel, byteOffset, byteLength, byteStride, target, sparseSubstitutionApplied);
+    }
+
+
     
     /**
      * Creates a new instance

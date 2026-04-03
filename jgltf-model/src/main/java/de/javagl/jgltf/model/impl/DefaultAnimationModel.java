@@ -61,6 +61,11 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
          * The output data
          */
         private final AccessorModel output;
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(input, interpolation, output);
+        }
         
         /**
          * Default constructor
@@ -121,6 +126,11 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
          * The path
          */
         private final String path;
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(sampler, nodeModel, path);
+        }
         
         /**
          * Default constructor
@@ -168,6 +178,18 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
      * of this animation
      */
     private final List<Channel> channels;
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), channels);
+    }
     
     /**
      * Creates a new instance

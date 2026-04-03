@@ -26,10 +26,7 @@
  */
 package de.javagl.jgltf.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.AnimationModel;
@@ -861,5 +858,17 @@ public class DefaultGltfModel extends AbstractModelElement implements GltfModel
     public DefaultAssetModel getAssetModel()
     {
         return assetModel;
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = hashCode(); // In my case I dont need to use this object in hashmaps so... this is fine
     }
 }

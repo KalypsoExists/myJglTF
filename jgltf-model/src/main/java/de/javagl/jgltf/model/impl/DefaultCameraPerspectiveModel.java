@@ -28,6 +28,8 @@ package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.CameraPerspectiveModel;
 
+import java.util.Objects;
+
 /**
  * Default implementation of a {@link CameraPerspectiveModel}
  */
@@ -52,6 +54,11 @@ public class DefaultCameraPerspectiveModel implements CameraPerspectiveModel
      * The near clipping plane distance
      */
     private Float znear;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(aspectRatio, yfov, zfar, znear);
+    }
 
     /**
      * Set the aspect ratio

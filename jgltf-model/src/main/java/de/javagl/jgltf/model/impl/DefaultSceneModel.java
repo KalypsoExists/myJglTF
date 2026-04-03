@@ -29,6 +29,7 @@ package de.javagl.jgltf.model.impl;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SceneModel;
@@ -66,6 +67,18 @@ public class DefaultSceneModel extends AbstractNamedModelElement
     public List<NodeModel> getNodeModels()
     {
         return Collections.unmodifiableList(nodeModels);
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), nodeModels);
     }
 
 }

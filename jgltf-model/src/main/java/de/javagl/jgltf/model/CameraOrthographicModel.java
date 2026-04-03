@@ -26,6 +26,9 @@
  */
 package de.javagl.jgltf.model;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Interface for an orthographic camera
  */

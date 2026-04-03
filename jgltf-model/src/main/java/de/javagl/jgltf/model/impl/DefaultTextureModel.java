@@ -29,6 +29,9 @@ package de.javagl.jgltf.model.impl;
 import de.javagl.jgltf.model.ImageModel;
 import de.javagl.jgltf.model.TextureModel;
 
+import java.util.Arrays;
+import java.util.Objects;
+
 /**
  * Implementation of a {@link TextureModel}
  */
@@ -146,5 +149,17 @@ public class DefaultTextureModel extends AbstractNamedModelElement
     public ImageModel getImageModel()
     {
         return imageModel;
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), magFilter, minFilter, wrapS, wrapT, imageModel);
     }
 }

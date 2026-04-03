@@ -27,6 +27,8 @@
 package de.javagl.jgltf.model.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Arrays;
+import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ImageModel;
@@ -132,6 +134,18 @@ public class DefaultImageModel extends AbstractNamedModelElement
             return bufferViewModel.getBufferViewData();
         }
         return Buffers.createSlice(imageData);
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), uri, mimeType, bufferViewModel, imageData);
     }
 
     

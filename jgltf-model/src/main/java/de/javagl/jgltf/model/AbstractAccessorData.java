@@ -71,6 +71,11 @@ abstract class AbstractAccessorData implements AccessorData
      */
     private final int byteStridePerElement;
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(componentType, bufferViewByteBuffer, byteOffset, numElements, elementType, numBytesPerComponent, byteStridePerElement);
+    }
+
     /**
      * Default constructor
      * 

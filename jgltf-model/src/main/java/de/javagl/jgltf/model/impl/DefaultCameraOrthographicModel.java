@@ -28,6 +28,8 @@ package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.CameraOrthographicModel;
 
+import java.util.Objects;
+
 /**
  * Default implementation of a {@link CameraOrthographicModel}
  */
@@ -52,6 +54,11 @@ public class DefaultCameraOrthographicModel implements CameraOrthographicModel
      * The near clipping plane distance
      */
     private Float znear;
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(xmag, ymag, zfar, znear);
+    }
 
     /**
      * Set the magnification in x-direction

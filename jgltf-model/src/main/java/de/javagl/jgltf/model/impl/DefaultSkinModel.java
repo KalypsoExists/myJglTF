@@ -26,10 +26,7 @@
  */
 package de.javagl.jgltf.model.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 import de.javagl.jgltf.model.AccessorDatas;
 import de.javagl.jgltf.model.AccessorFloatData;
@@ -164,6 +161,18 @@ public final class DefaultSkinModel extends AbstractNamedModelElement
             localResult[j] = inverseBindMatricesData.get(index, j);
         }
         return localResult;
+    }
+
+    private int hash;
+
+    @Override
+    public int hashCode() {
+        return hash;
+    }
+
+    @Override
+    public void reCalcHash() {
+        hash = Objects.hash(getName(), skeleton, joints, Arrays.hashCode(bindShapeMatrix), inverseBindMatrices);
     }
 
 }
