@@ -28,16 +28,12 @@ package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.ImageModel;
 import de.javagl.jgltf.model.TextureModel;
-import de.javagl.jgltf.model.custom.StaticHash;
-
-import java.util.Arrays;
-import java.util.Objects;
 
 /**
  * Implementation of a {@link TextureModel}
  */
 public class DefaultTextureModel extends AbstractNamedModelElement
-    implements TextureModel, StaticHash
+    implements TextureModel
 {
     /**
      * The magnification filter constant
@@ -152,15 +148,15 @@ public class DefaultTextureModel extends AbstractNamedModelElement
         return imageModel;
     }
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + magFilter;
+        hash = 31 * hash + minFilter;
+        hash = 31 * hash + wrapS;
+        hash = 31 * hash + wrapT;
+        hash = 31 * hash + imageModel.hashCode();
         return hash;
     }
 
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), magFilter, minFilter, wrapS, wrapT, imageModel);
-    }
 }

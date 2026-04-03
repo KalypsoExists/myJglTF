@@ -57,7 +57,12 @@ public class DefaultCameraPerspectiveModel implements CameraPerspectiveModel
 
     @Override
     public int hashCode() {
-        return Objects.hash(aspectRatio, yfov, zfar, znear);
+        int hash = 1;
+        hash = 31 * hash + aspectRatio.hashCode();
+        hash = 31 * hash + yfov.hashCode();
+        hash = 31 * hash + zfar.hashCode();
+        hash = 31 * hash + znear.hashCode();
+        return hash;
     }
 
     /**

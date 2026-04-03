@@ -32,14 +32,14 @@ import java.util.function.Consumer;
 
 import de.javagl.jgltf.model.BufferModel;
 import de.javagl.jgltf.model.BufferViewModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link BufferViewModel}
  */
 public final class DefaultBufferViewModel extends AbstractNamedModelElement
-    implements BufferViewModel, StaticHash
+    implements BufferViewModel
 {
     /**
      * The {@link BufferModel} for this model
@@ -79,19 +79,17 @@ public final class DefaultBufferViewModel extends AbstractNamedModelElement
      */
     private boolean sparseSubstitutionApplied;
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + (bufferModel == null ? 0 : bufferModel.hashCode());
+        hash = 31 * hash + byteOffset;
+        hash = 31 * hash + byteLength;
+        hash = 31 * hash + (byteStride == null ? 0 : byteStride);
+        hash = 31 * hash + (target == null ? 0 : target);
         return hash;
     }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), bufferModel, byteOffset, byteLength, byteStride, target, sparseSubstitutionApplied);
-    }
-
-
     
     /**
      * Creates a new instance

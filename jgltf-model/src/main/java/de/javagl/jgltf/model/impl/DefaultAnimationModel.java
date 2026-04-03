@@ -34,13 +34,13 @@ import java.util.Objects;
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.AnimationModel;
 import de.javagl.jgltf.model.NodeModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of an {@link AnimationModel}
  */
 public class DefaultAnimationModel extends AbstractNamedModelElement
-    implements AnimationModel, StaticHash
+    implements AnimationModel
 {
     /**
      * Default implementation of a 
@@ -65,7 +65,11 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
 
         @Override
         public int hashCode() {
-            return Objects.hash(input, interpolation, output);
+            int hash = 1;
+            hash = 31 * hash + input.hashCode();
+            hash = 31 * hash + interpolation.hashCode();
+            hash = 31 * hash + output.hashCode();
+            return hash;
         }
         
         /**
@@ -130,7 +134,11 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
 
         @Override
         public int hashCode() {
-            return Objects.hash(sampler, nodeModel, path);
+            int hash = 1;
+            hash = 31 * hash + sampler.hashCode();
+            hash = 31 * hash + nodeModel.hashCode();
+            hash = 31 * hash + path.hashCode();
+            return hash;
         }
         
         /**
@@ -180,17 +188,14 @@ public class DefaultAnimationModel extends AbstractNamedModelElement
      */
     private final List<Channel> channels;
 
-    private int hash;
 
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + channels.hashCode();
         return hash;
     }
 
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), channels);
-    }
     
     /**
      * Creates a new instance

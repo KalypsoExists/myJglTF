@@ -31,13 +31,13 @@ import java.util.*;
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.MaterialModel;
 import de.javagl.jgltf.model.MeshPrimitiveModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of a {@link MeshPrimitiveModel}
  */
 public final class DefaultMeshPrimitiveModel extends AbstractModelElement 
-    implements MeshPrimitiveModel, StaticHash
+    implements MeshPrimitiveModel
 {
     /**
      * The attributes of this mesh primitive model
@@ -72,8 +72,8 @@ public final class DefaultMeshPrimitiveModel extends AbstractModelElement
     public DefaultMeshPrimitiveModel(int mode)
     {
         this.mode = mode;
-        this.attributes = new LinkedHashMap<String, AccessorModel>();
-        this.targets = new ArrayList<Map<String,AccessorModel>>();
+        this.attributes = new LinkedHashMap<>();
+        this.targets = new ArrayList<>();
     }
     
     
@@ -172,16 +172,15 @@ public final class DefaultMeshPrimitiveModel extends AbstractModelElement
         return Collections.unmodifiableList(targets);
     }
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + mode;
+        hash = 31 * hash + indices.hashCode();
+        hash = 31 * hash + attributes.hashCode();
+        hash = 31 * hash + materialModel.hashCode();
+        hash = 31 * hash + targets.hashCode();
         return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(mode, indices, attributes, materialModel, targets);
     }
 
 }

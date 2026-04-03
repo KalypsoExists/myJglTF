@@ -32,7 +32,7 @@ import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.Accessors;
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ElementType;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -41,7 +41,7 @@ import java.util.Objects;
  * Implementation of an {@link AccessorModel}
  */
 public final class DefaultAccessorModel extends AbstractNamedModelElement
-    implements AccessorModel, StaticHash
+    implements AccessorModel
 {
     /**
      * The component type, as a GL constant
@@ -93,19 +93,23 @@ public final class DefaultAccessorModel extends AbstractNamedModelElement
      */
     private Number[] min;
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + componentType;
+        hash = 31 * hash + (normalized ? 1 : 0);
+        hash = 31 * hash + byteOffset;
+        hash = 31 * hash + (bufferViewModel == null ? 0 : bufferViewModel.hashCode());
+        hash = 31 * hash + elementType.hashCode();
+        hash = 31 * hash + count;
+        hash = 31 * hash + byteStride;
+        hash = 31 * hash + (accessorData == null ? 0 : accessorData.hashCode());
+        hash = 31 * hash + (max == null ? 0 : Arrays.hashCode(max));
+        hash = 31 * hash + (min == null ? 0 : Arrays.hashCode(max));
         return hash;
     }
 
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), componentType, normalized, byteOffset, bufferViewModel,
-                elementType, count, byteStride, accessorData, Arrays.hashCode(max), Arrays.hashCode(min));
-    }
-    
     /**
      * Creates a new instance
      * 

@@ -33,13 +33,13 @@ import java.util.Objects;
 
 import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SceneModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of a {@link SceneModel} 
  */
 public class DefaultSceneModel extends AbstractNamedModelElement
-    implements SceneModel, StaticHash
+    implements SceneModel
 {
     /**
      * The list of root nodes
@@ -70,16 +70,12 @@ public class DefaultSceneModel extends AbstractNamedModelElement
         return Collections.unmodifiableList(nodeModels);
     }
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + nodeModels.hashCode();
         return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), nodeModels);
     }
 
 }

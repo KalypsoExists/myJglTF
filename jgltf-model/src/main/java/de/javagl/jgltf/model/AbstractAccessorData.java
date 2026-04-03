@@ -73,7 +73,15 @@ abstract class AbstractAccessorData implements AccessorData
 
     @Override
     public int hashCode() {
-        return Objects.hash(componentType, bufferViewByteBuffer, byteOffset, numElements, elementType, numBytesPerComponent, byteStridePerElement);
+        int hash = 1;
+        hash = 31 * hash + componentType.hashCode();
+        hash = 31 * hash + bufferViewByteBuffer.hashCode();
+        hash = 31 * hash + byteOffset;
+        hash = 31 * hash + numElements;
+        hash = 31 * hash + elementType.hashCode();
+        hash = 31 * hash + numBytesPerComponent;
+        hash = 31 * hash + byteStridePerElement;
+        return hash;
     }
 
     /**

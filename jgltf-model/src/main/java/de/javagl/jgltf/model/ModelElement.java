@@ -26,8 +26,6 @@
  */
 package de.javagl.jgltf.model;
 
-import de.javagl.jgltf.model.custom.StaticHash;
-
 import java.util.Map;
 
 /**

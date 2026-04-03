@@ -30,13 +30,13 @@ import java.util.*;
 
 import de.javagl.jgltf.model.MeshModel;
 import de.javagl.jgltf.model.MeshPrimitiveModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of a {@link MeshModel}
  */
 public class DefaultMeshModel extends AbstractNamedModelElement
-    implements MeshModel, StaticHash
+    implements MeshModel
 {
     /**
      * The {@link MeshPrimitiveModel} instances 
@@ -46,7 +46,7 @@ public class DefaultMeshModel extends AbstractNamedModelElement
     /**
      * The morph target weights
      */
-    private float weights[];
+    private float[] weights;
     
     /**
      * Creates a new instance
@@ -91,13 +91,10 @@ public class DefaultMeshModel extends AbstractNamedModelElement
 
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + meshPrimitiveModels.hashCode();
+        hash = 31 * hash + Arrays.hashCode(weights);
         return hash;
-    }
-
-    private int hash;
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), meshPrimitiveModels, Arrays.hashCode(weights));
     }
 }

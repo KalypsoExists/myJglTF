@@ -27,7 +27,7 @@
 package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.AssetModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 import java.util.Objects;
 
@@ -35,7 +35,7 @@ import java.util.Objects;
  * Default implementation of an {@link AssetModel}
  */
 public class DefaultAssetModel extends AbstractNamedModelElement
-    implements AssetModel, StaticHash
+    implements AssetModel
 {
     /**
      * The copyright
@@ -46,18 +46,6 @@ public class DefaultAssetModel extends AbstractNamedModelElement
      * The generator
      */
     private String generator;
-
-    private int hash;
-
-    @Override
-    public int hashCode() {
-        return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), copyright, generator);
-    }
 
     /**
      * Set the copyright

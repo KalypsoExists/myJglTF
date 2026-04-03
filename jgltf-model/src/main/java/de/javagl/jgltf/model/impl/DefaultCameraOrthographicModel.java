@@ -57,7 +57,12 @@ public class DefaultCameraOrthographicModel implements CameraOrthographicModel
 
     @Override
     public int hashCode() {
-        return Objects.hash(xmag, ymag, zfar, znear);
+        int hash = 1;
+        hash = 31 * hash + xmag.hashCode();
+        hash = 31 * hash + ymag.hashCode();
+        hash = 31 * hash + zfar.hashCode();
+        hash = 31 * hash + znear.hashCode();
+        return hash;
     }
 
     /**

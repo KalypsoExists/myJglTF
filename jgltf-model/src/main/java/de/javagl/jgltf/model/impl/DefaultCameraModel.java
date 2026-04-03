@@ -26,8 +26,6 @@
  */
 package de.javagl.jgltf.model.impl;
 
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.function.DoubleSupplier;
 import java.util.function.Supplier;
 
@@ -35,13 +33,12 @@ import de.javagl.jgltf.model.CameraModel;
 import de.javagl.jgltf.model.CameraOrthographicModel;
 import de.javagl.jgltf.model.CameraPerspectiveModel;
 import de.javagl.jgltf.model.Suppliers;
-import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link CameraModel}  
  */
 public final class DefaultCameraModel extends AbstractNamedModelElement
-    implements CameraModel, StaticHash
+    implements CameraModel
 {
     /**
      * The {@link CameraOrthographicModel}
@@ -116,16 +113,13 @@ public final class DefaultCameraModel extends AbstractNamedModelElement
         });
     }
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + getName().hashCode();
+        hash = 31 * hash + (cameraOrthographicModel == null ? 0 : cameraOrthographicModel.hashCode());
+        hash = 31 * hash + (cameraPerspectiveModel == null ? 0 : cameraPerspectiveModel.hashCode());
         return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), cameraOrthographicModel, cameraPerspectiveModel);
     }
     
     

@@ -32,14 +32,14 @@ import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ImageModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link ImageModel}
  */
 public class DefaultImageModel extends AbstractNamedModelElement
-    implements ImageModel, StaticHash
+    implements ImageModel
 {
     /**
      * The URI of the image
@@ -137,17 +137,15 @@ public class DefaultImageModel extends AbstractNamedModelElement
         return Buffers.createSlice(imageData);
     }
 
-    private int hash;
 
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + uri.hashCode();
+        hash = 31 * hash + mimeType.hashCode();
+        hash = 31 * hash + bufferViewModel.hashCode();
+        hash = 31 * hash + imageData.capacity();
         return hash;
     }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), uri, mimeType, bufferViewModel, imageData);
-    }
-
     
 }

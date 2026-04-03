@@ -30,14 +30,14 @@ import java.nio.ByteBuffer;
 import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferModel;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link BufferModel}
  */
 public final class DefaultBufferModel extends AbstractNamedModelElement
-    implements BufferModel, StaticHash
+    implements BufferModel
 {
     /**
      * The URI of the buffer data
@@ -49,16 +49,12 @@ public final class DefaultBufferModel extends AbstractNamedModelElement
      */
     private ByteBuffer bufferData;
 
-    private int hash;
-
     @Override
     public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() != null ? getName().hashCode() : 0);
+        hash = 31 * hash + (bufferData != null ? bufferData.capacity() : 0);
         return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), uri, bufferData);
     }
     
     /**

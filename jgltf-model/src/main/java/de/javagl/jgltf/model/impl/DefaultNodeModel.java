@@ -36,13 +36,13 @@ import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SkinModel;
 import de.javagl.jgltf.model.Suppliers;
 import de.javagl.jgltf.model.Utils;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of a {@link NodeModel} 
  */
 public class DefaultNodeModel extends AbstractNamedModelElement
-    implements NodeModel, StaticHash
+    implements NodeModel
 {
     /**
      * A thread-local, temporary 16-element matrix
@@ -416,19 +416,29 @@ public class DefaultNodeModel extends AbstractNamedModelElement
         return array;
     }
 
-    private int hash;
+    /*
+
+    They are not shared structures, only recursive, hence they do not need proper hash codes
+    Moreover, its proper hashing is expensive (due to parent and children relations)
 
     @Override
     public int hashCode() {
-        return hash;
-    }
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + (parent == null ? 0 : parent.hashCode());
+        hash = 31 * hash + (meshModels == null ? 0 : meshModels.hashCode());
+        hash = 31 * hash + (children == null ? 0 : children.hashCode());
+        hash = 31 * hash + (skinModel == null ? 0 : skinModel.hashCode());
+        hash = 31 * hash + (cameraModel == null ? 0 : cameraModel.hashCode());
 
-    @Override
-    public void reCalcHash() {
-        float[] transform = new float[16];
-        computeLocalTransform(transform);
-        hash = Objects.hash(getName(), parent, meshModels, children, skinModel, cameraModel, Arrays.hashCode(transform));
-    }
+        hash = 31 * hash + (matrix == null ? 0 : Arrays.hashCode(matrix));
+
+        hash = 31 * hash + (translation == null ? 0 : Arrays.hashCode(translation));
+        hash = 31 * hash + (rotation == null ? 0 : Arrays.hashCode(rotation));
+        hash = 31 * hash + (scale == null ? 0 : Arrays.hashCode(scale));
+
+        return hash;
+    }*/
     
     
 }

@@ -28,7 +28,6 @@ package de.javagl.jgltf.model.v2;
 
 import de.javagl.jgltf.model.MaterialModel;
 import de.javagl.jgltf.model.TextureModel;
-import de.javagl.jgltf.model.custom.StaticHash;
 import de.javagl.jgltf.model.impl.AbstractNamedModelElement;
 
 import java.util.Arrays;
@@ -41,7 +40,7 @@ import java.util.Objects;
  * a different package in the future.
  */
 public final class MaterialModelV2 extends AbstractNamedModelElement
-    implements MaterialModel, StaticHash
+    implements MaterialModel
 {
     /**
      * Alpha modes
@@ -159,16 +158,10 @@ public final class MaterialModelV2 extends AbstractNamedModelElement
      */
     private boolean doubleSided;
 
-    private int hash;
 
     @Override
     public int hashCode() {
-        return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(
+        return Objects.hash(
                 Arrays.hashCode(baseColorFactor), baseColorTexcoord, baseColorTexture,
                 metallicFactor, roughnessFactor, metallicRoughnessTexcoord, metallicRoughnessTexture,
                 normalScale, normalTexcoord, normalTexture,
@@ -177,8 +170,7 @@ public final class MaterialModelV2 extends AbstractNamedModelElement
                 alphaMode, alphaCutoff, doubleSided
         );
     }
-    
-    
+
     /**
      * Creates a new instance with default values
      */

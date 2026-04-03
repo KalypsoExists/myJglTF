@@ -35,13 +35,13 @@ import de.javagl.jgltf.model.MathUtils;
 import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SkinModel;
 import de.javagl.jgltf.model.Utils;
-import de.javagl.jgltf.model.custom.StaticHash;
+
 
 /**
  * Implementation of a {@link SkinModel}
  */
 public final class DefaultSkinModel extends AbstractNamedModelElement
-    implements SkinModel, StaticHash
+    implements SkinModel
 {
     /**
      * The bind shape matrix
@@ -62,6 +62,16 @@ public final class DefaultSkinModel extends AbstractNamedModelElement
      * The inverse bind matrices
      */
     private AccessorModel inverseBindMatrices;
+
+    @Override
+    public int hashCode() {
+        int hash = 1;
+        hash = 31 * hash + (getName() == null ? 0 : getName().hashCode());
+        hash = 31 * hash + (skeleton == null ? 0 : skeleton.hashCode());
+        hash = 31 * hash + Arrays.hashCode(bindShapeMatrix);
+        hash = 31 * hash + inverseBindMatrices.hashCode();
+        return hash;
+    }
     
     /**
      * Creates a new instance
@@ -163,17 +173,4 @@ public final class DefaultSkinModel extends AbstractNamedModelElement
         }
         return localResult;
     }
-
-    private int hash;
-
-    @Override
-    public int hashCode() {
-        return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = Objects.hash(getName(), skeleton, joints, Arrays.hashCode(bindShapeMatrix), inverseBindMatrices);
-    }
-
 }
