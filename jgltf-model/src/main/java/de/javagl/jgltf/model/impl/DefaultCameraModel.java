@@ -35,12 +35,13 @@ import de.javagl.jgltf.model.CameraModel;
 import de.javagl.jgltf.model.CameraOrthographicModel;
 import de.javagl.jgltf.model.CameraPerspectiveModel;
 import de.javagl.jgltf.model.Suppliers;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link CameraModel}  
  */
 public final class DefaultCameraModel extends AbstractNamedModelElement
-    implements CameraModel
+    implements CameraModel, StaticHash
 {
     /**
      * The {@link CameraOrthographicModel}

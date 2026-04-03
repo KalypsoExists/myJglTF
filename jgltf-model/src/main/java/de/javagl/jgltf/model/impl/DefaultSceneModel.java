@@ -33,12 +33,13 @@ import java.util.Objects;
 
 import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SceneModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link SceneModel} 
  */
 public class DefaultSceneModel extends AbstractNamedModelElement
-    implements SceneModel
+    implements SceneModel, StaticHash
 {
     /**
      * The list of root nodes

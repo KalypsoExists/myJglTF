@@ -31,7 +31,7 @@ import de.javagl.jgltf.model.NamedModelElement;
 /**
  * Abstract base implementation of the {@link NamedModelElement} interface.
  */
-public class AbstractNamedModelElement extends AbstractModelElement 
+public abstract class AbstractNamedModelElement extends AbstractModelElement
     implements NamedModelElement
 {
     /**

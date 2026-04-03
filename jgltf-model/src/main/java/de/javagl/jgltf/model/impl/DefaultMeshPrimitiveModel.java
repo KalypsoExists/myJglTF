@@ -31,12 +31,13 @@ import java.util.*;
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.MaterialModel;
 import de.javagl.jgltf.model.MeshPrimitiveModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link MeshPrimitiveModel}
  */
 public final class DefaultMeshPrimitiveModel extends AbstractModelElement 
-    implements MeshPrimitiveModel
+    implements MeshPrimitiveModel, StaticHash
 {
     /**
      * The attributes of this mesh primitive model

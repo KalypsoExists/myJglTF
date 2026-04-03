@@ -30,13 +30,14 @@ import java.nio.ByteBuffer;
 import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link BufferModel}
  */
 public final class DefaultBufferModel extends AbstractNamedModelElement
-    implements BufferModel
+    implements BufferModel, StaticHash
 {
     /**
      * The URI of the buffer data

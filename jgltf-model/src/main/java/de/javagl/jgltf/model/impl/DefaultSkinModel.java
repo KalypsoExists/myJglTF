@@ -35,12 +35,13 @@ import de.javagl.jgltf.model.MathUtils;
 import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SkinModel;
 import de.javagl.jgltf.model.Utils;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link SkinModel}
  */
 public final class DefaultSkinModel extends AbstractNamedModelElement
-    implements SkinModel
+    implements SkinModel, StaticHash
 {
     /**
      * The bind shape matrix

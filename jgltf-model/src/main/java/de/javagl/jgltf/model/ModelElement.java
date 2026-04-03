@@ -34,7 +34,7 @@ import java.util.Map;
  * Interface for all classes of the model package. This is corresponds to
  * the <code>GlTFProperty</code> of the original glTF asset.
  */
-public interface ModelElement extends StaticHash
+public interface ModelElement
 {
     /**
      * Returns the extensions of this element. This is a mapping from

@@ -860,15 +860,4 @@ public class DefaultGltfModel extends AbstractModelElement implements GltfModel
         return assetModel;
     }
 
-    private int hash;
-
-    @Override
-    public int hashCode() {
-        return hash;
-    }
-
-    @Override
-    public void reCalcHash() {
-        hash = hashCode(); // In my case I dont need to use this object in hashmaps so... this is fine
-    }
 }

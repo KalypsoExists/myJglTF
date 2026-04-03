@@ -32,13 +32,14 @@ import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ImageModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link ImageModel}
  */
 public class DefaultImageModel extends AbstractNamedModelElement
-    implements ImageModel
+    implements ImageModel, StaticHash
 {
     /**
      * The URI of the image

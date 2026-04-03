@@ -35,7 +35,7 @@ import de.javagl.jgltf.model.ModelElement;
 /**
  * Abstract base implementation of the {@link ModelElement} interface.
  */
-public class AbstractModelElement implements ModelElement
+public abstract class AbstractModelElement implements ModelElement
 {
     /**
      * The extensions
@@ -118,4 +118,5 @@ public class AbstractModelElement implements ModelElement
     {
         return extras;
     }
+
 }

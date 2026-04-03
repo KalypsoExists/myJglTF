@@ -36,12 +36,13 @@ import de.javagl.jgltf.model.NodeModel;
 import de.javagl.jgltf.model.SkinModel;
 import de.javagl.jgltf.model.Suppliers;
 import de.javagl.jgltf.model.Utils;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of a {@link NodeModel} 
  */
 public class DefaultNodeModel extends AbstractNamedModelElement
-    implements NodeModel
+    implements NodeModel, StaticHash
 {
     /**
      * A thread-local, temporary 16-element matrix

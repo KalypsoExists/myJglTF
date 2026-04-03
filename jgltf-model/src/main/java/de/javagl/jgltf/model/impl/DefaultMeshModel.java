@@ -36,7 +36,7 @@ import de.javagl.jgltf.model.custom.StaticHash;
  * Implementation of a {@link MeshModel}
  */
 public class DefaultMeshModel extends AbstractNamedModelElement
-    implements MeshModel
+    implements MeshModel, StaticHash
 {
     /**
      * The {@link MeshPrimitiveModel} instances 

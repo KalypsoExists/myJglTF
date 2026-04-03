@@ -34,12 +34,13 @@ import java.util.Objects;
 import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.AnimationModel;
 import de.javagl.jgltf.model.NodeModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 /**
  * Implementation of an {@link AnimationModel}
  */
 public class DefaultAnimationModel extends AbstractNamedModelElement
-    implements AnimationModel
+    implements AnimationModel, StaticHash
 {
     /**
      * Default implementation of a 

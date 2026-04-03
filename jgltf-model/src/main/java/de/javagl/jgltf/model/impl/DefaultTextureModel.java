@@ -28,6 +28,7 @@ package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.ImageModel;
 import de.javagl.jgltf.model.TextureModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -36,7 +37,7 @@ import java.util.Objects;
  * Implementation of a {@link TextureModel}
  */
 public class DefaultTextureModel extends AbstractNamedModelElement
-    implements TextureModel
+    implements TextureModel, StaticHash
 {
     /**
      * The magnification filter constant

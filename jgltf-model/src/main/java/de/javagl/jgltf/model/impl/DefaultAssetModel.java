@@ -27,6 +27,7 @@
 package de.javagl.jgltf.model.impl;
 
 import de.javagl.jgltf.model.AssetModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 import java.util.Objects;
 
@@ -34,7 +35,7 @@ import java.util.Objects;
  * Default implementation of an {@link AssetModel}
  */
 public class DefaultAssetModel extends AbstractNamedModelElement
-    implements AssetModel
+    implements AssetModel, StaticHash
 {
     /**
      * The copyright

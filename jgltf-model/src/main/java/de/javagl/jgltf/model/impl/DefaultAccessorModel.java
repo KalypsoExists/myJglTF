@@ -32,6 +32,7 @@ import de.javagl.jgltf.model.AccessorModel;
 import de.javagl.jgltf.model.Accessors;
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.ElementType;
+import de.javagl.jgltf.model.custom.StaticHash;
 
 import java.util.Arrays;
 import java.util.Objects;
@@ -40,7 +41,7 @@ import java.util.Objects;
  * Implementation of an {@link AccessorModel}
  */
 public final class DefaultAccessorModel extends AbstractNamedModelElement
-    implements AccessorModel
+    implements AccessorModel, StaticHash
 {
     /**
      * The component type, as a GL constant

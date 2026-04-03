@@ -55,7 +55,7 @@ public class DefaultProgramModel extends AbstractNamedModelElement
      * The attributes
      */
     private final List<String> attributes;
-    
+
     /**
      * Default constructor
      */

@@ -27,6 +27,7 @@
 package de.javagl.jgltf.model.gl.impl;
 
 import java.nio.ByteBuffer;
+import java.util.Objects;
 
 import de.javagl.jgltf.model.BufferViewModel;
 import de.javagl.jgltf.model.gl.ShaderModel;

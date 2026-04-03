@@ -32,13 +32,14 @@ import java.util.function.Consumer;
 
 import de.javagl.jgltf.model.BufferModel;
 import de.javagl.jgltf.model.BufferViewModel;
+import de.javagl.jgltf.model.custom.StaticHash;
 import de.javagl.jgltf.model.io.Buffers;
 
 /**
  * Implementation of a {@link BufferViewModel}
  */
 public final class DefaultBufferViewModel extends AbstractNamedModelElement
-    implements BufferViewModel
+    implements BufferViewModel, StaticHash
 {
     /**
      * The {@link BufferModel} for this model
