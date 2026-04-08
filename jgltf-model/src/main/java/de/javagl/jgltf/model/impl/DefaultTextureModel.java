@@ -151,10 +151,10 @@ public class DefaultTextureModel extends AbstractNamedModelElement
     @Override
     public int hashCode() {
         int hash = 1;
-        hash = 31 * hash + magFilter;
-        hash = 31 * hash + minFilter;
-        hash = 31 * hash + wrapS;
-        hash = 31 * hash + wrapT;
+        hash = 31 * hash + (magFilter == null ? 0 : magFilter);
+        hash = 31 * hash + (minFilter == null ? 0 : minFilter);
+        hash = 31 * hash + (wrapS == null ? 0 : wrapS);
+        hash = 31 * hash + (wrapT == null ? 0 : wrapT);
         hash = 31 * hash + imageModel.hashCode();
         return hash;
     }
