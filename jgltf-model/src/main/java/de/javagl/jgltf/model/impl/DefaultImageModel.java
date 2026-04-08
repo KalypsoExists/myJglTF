@@ -141,10 +141,10 @@ public class DefaultImageModel extends AbstractNamedModelElement
     @Override
     public int hashCode() {
         int hash = 1;
-        hash = 31 * hash + uri.hashCode();
-        hash = 31 * hash + mimeType.hashCode();
-        hash = 31 * hash + bufferViewModel.hashCode();
-        hash = 31 * hash + imageData.capacity();
+        hash = 31 * hash + (uri == null ? 0 : uri.hashCode());
+        hash = 31 * hash + (mimeType == null ? 0 : mimeType.hashCode());
+        hash = 31 * hash + (bufferViewModel == null ? 0 : bufferViewModel.hashCode());
+        hash = 31 * hash + (imageData == null ? 0 : imageData.capacity());
         return hash;
     }
     
