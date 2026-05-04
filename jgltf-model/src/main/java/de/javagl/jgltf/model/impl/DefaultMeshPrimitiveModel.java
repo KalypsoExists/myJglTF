@@ -176,9 +176,9 @@ public final class DefaultMeshPrimitiveModel extends AbstractModelElement
     public int hashCode() {
         int hash = 1;
         hash = 31 * hash + mode;
-        hash = 31 * hash + indices.hashCode();
+        hash = 31 * hash + (indices == null ? 0 : indices.hashCode());
         hash = 31 * hash + attributes.hashCode();
-        hash = 31 * hash + materialModel.hashCode();
+        hash = 31 * hash + (materialModel == null ? 0 : materialModel.hashCode());
         hash = 31 * hash + targets.hashCode();
         return hash;
     }
